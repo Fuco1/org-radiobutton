@@ -11,13 +11,17 @@ property is satisfied for lists which are marked as radiobutton lists.
 
 Read the blog post for more background.
 
-* Example
+* Usage
+
+To enable the mode call =org-radiobutton-mode=.  It is a global minor
+mode and automatically becomes active in all existing =org-mode=
+buffers.
 
 Radiobutton list are excellent as sources for other code blocks in org
-mode.  This mode provides a query function =org-radiobutton-value= which
-takes an element name (or the list under point) and returns the value
-of the selected item.  You can use a radiobutton list as a simple
-toggle for a pre-defined list of variable inputs.
+mode.  This package provides a query function =org-radiobutton-value=
+which takes an element name (or the list under point) and returns the
+value of the selected item.  You can use a radiobutton list as a
+simple toggle for a pre-defined list of variable inputs.
 
 #+BEGIN_SRC org
 ,#+attr_org: :radio
