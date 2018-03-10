@@ -1,4 +1,4 @@
-;;; org-radiobox.el --- Radiobutton for org-mode lists. -*- lexical-binding: t -*-
+;;; org-radiobutton.el --- Radiobutton for org-mode lists. -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2018 Matúš Goljer
 
@@ -6,8 +6,9 @@
 ;; Maintainer: Matúš Goljer <matus.goljer@gmail.com>
 ;; Version: 0.0.1
 ;; Created: 10th March 2018
-;; Package-requires: ((dash "2.13.0"))
+;; Package-requires: ((dash "2.13.0") (emacs "24"))
 ;; Keywords: outlines
+;; URL: https://github.com/Fuco1/org-radiobutton
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License
@@ -23,6 +24,17 @@
 ;; along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
+
+;; Radiobuttons are groups of options where exactly one option has to
+;; be selected at all times.
+
+;; Org mode checkbox lists allow selecting from a list of candidates
+;; but the user would have to manually ensure the radiobutton
+;; property.
+
+;; This package provides a convenient minor mode that will make sure
+;; the property is satisfied for lists which are marked as radiobutton
+;; lists.
 
 ;;; Code:
 
@@ -133,6 +145,7 @@ as input for other org source blocks, for example:
 #+RESULTS:
 : Will query the staging database"
   :global t
+  :require 'org-radiobutton
   (if org-radiobutton-mode
       (progn
         (add-hook 'org-mode-hook 'org-radiobutton--enable)
