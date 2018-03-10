@@ -113,11 +113,13 @@ of the item (the part at the beginning separated by ::)."
     (org-radiobutton--get-checked-value structure with-description)))
 
 (defun org-radiobutton--enable ()
+  "Enable checking of radiobutton property in current buffer."
   (add-hook 'org-checkbox-statistics-hook
             'org-radiobutton--ensure-radio-property
             nil 'local))
 
 (defun org-radiobutton--disable ()
+  "Disable checking of radiobutton property in current buffer."
   (remove-hook 'org-checkbox-statistics-hook
                'org-radiobutton--ensure-radio-property
                'local))
