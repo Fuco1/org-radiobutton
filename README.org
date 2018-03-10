@@ -1,0 +1,54 @@
+* org-radiobutton
+
+Radiobuttons are groups of options where exactly one option has to be
+selected at all times.
+
+Org mode checkbox lists allow selecting from a list of candidates but
+the user would have to manually ensure the radiobutton property.
+
+This package provides a convenient minor mode that will make sure the
+property is satisfied for lists which are marked as radiobutton lists.
+
+Read the blog post for more background.
+
+* Example
+
+Radiobutton list are excellent as sources for other code blocks in org
+mode.  This mode provides a query function =org-radiobutton-value= which
+takes an element name (or the list under point) and returns the value
+of the selected item.  You can use a radiobutton list as a simple
+toggle for a pre-defined list of variable inputs.
+
+#+BEGIN_SRC org
+,#+attr_org: :radio
+,#+name: service-to-query
+- [ ] localhost
+- [X] staging
+- [ ] production
+
+,#+BEGIN_SRC elisp :var service=(org-radiobutton-value "service-to-query")
+(format "Will query the %s database" service)
+,#+END_SRC
+
+,#+RESULTS:
+: Will query the staging database
+#+END_SRC
+
+This is quite useful when doing something like [[http://howardism.org/Technical/Emacs/literate-devops.html][Emacs literate devops]]
+where we can build one pipeline to operate on multiple environments
+and toggle between them with a single =C-c C-c=.
+
+* Development
+
+We use cask.  To run tests:
+
+#+BEGIN_SRC sh
+cask install
+make
+#+END_SRC
+
+* Acknowledgement
+
+I was looking for this functionality and found [[http://kitchingroup.cheme.cmu.edu/blog/2015/10/05/A-checkbox-list-in-org-mode-with-one-value/][John Kitchin]]'s
+implementation (via [[http://irreal.org/blog/?p=4644][Irreal]]) from a couple years ago.  I fixed it to
+work with "modern" =org-mode= and added a couple additional features.
