@@ -1,4 +1,4 @@
-* org-radiobutton
+* org-radiobutton [[https://travis-ci.org/Fuco1/org-radiobutton.svg?branch=master]]
 
 Radiobuttons are groups of options where exactly one option has to be
 selected at all times.
