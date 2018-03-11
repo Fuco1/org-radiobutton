@@ -38,6 +38,25 @@ simple toggle for a pre-defined list of variable inputs.
 : Will query the staging database
 #+END_SRC
 
+If the item has a description this is not included in the returned
+value unless the second optional argument is non-nil:
+
+#+BEGIN_SRC org
+,#+attr_org: :radio
+,#+name: number
+- [ ] one :: 1
+- [X] two :: 2
+- [ ] three :: 3
+
+,#+BEGIN_SRC elisp :var number=(org-radiobutton-value "number" t)
+(-let (((desc value) (split-string number " :: ")))
+  (format "An item with description `%s' and value `%s'" desc value))
+,#+END_SRC
+
+,#+RESULTS:
+: An item with description `two' and value `2'
+#+END_SRC
+
 This is quite useful when doing something like [[http://howardism.org/Technical/Emacs/literate-devops.html][Emacs literate devops]]
 where we can build one pipeline to operate on multiple environments
 and toggle between them with a single =C-c C-c=.
