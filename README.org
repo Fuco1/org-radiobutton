@@ -9,7 +9,7 @@ the user would have to manually ensure the radiobutton property.
 This package provides a convenient minor mode that will make sure the
 property is satisfied for lists which are marked as radiobutton lists.
 
-Read the blog post for more background.
+Read the [[https://fuco1.github.io/2018-03-11-Use-org-radiobutton-to-select-an-option-from-a-list.html][blog post]] for more background.
 
 * Usage
 
