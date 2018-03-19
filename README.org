@@ -1,3 +1,5 @@
+#+STARTUP: showall
+
 * org-radiobutton [[https://travis-ci.org/Fuco1/org-radiobutton.svg?branch=master]]
 
 Radiobuttons are groups of options where exactly one option has to be
@@ -10,6 +12,11 @@ This package provides a convenient minor mode that will make sure the
 property is satisfied for lists which are marked as radiobutton lists.
 
 Read the [[https://fuco1.github.io/2018-03-11-Use-org-radiobutton-to-select-an-option-from-a-list.html][blog post]] for more background.
+
+* Installation
+
+Install from [[https://melpa.org/#/org-radiobutton][MELPA]].  If you install manually make sure [[https://github.com/magnars/dash.el][dash.el]] is on
+your load path.
 
 * Usage
 
