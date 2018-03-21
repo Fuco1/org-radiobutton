@@ -20,7 +20,7 @@ your load path.
 
 * Usage
 
-To enable the mode call =org-radiobutton-mode=.  It is a global minor
+To enable the mode call =global-org-radiobutton-mode=.  It is a global minor
 mode and automatically becomes active in all existing =org-mode=
 buffers.
 

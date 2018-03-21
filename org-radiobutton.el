@@ -124,6 +124,7 @@ of the item (the part at the beginning separated by ::)."
                'org-radiobutton--ensure-radio-property
                'local))
 
+;;;###autoload
 (define-minor-mode org-radiobutton-mode
   "Minor mode that ensures radiobutton property on radio lists.
 
@@ -146,20 +147,20 @@ as input for other org source blocks, for example:
 
 #+RESULTS:
 : Will query the staging database"
-  :global t
-  :require 'org-radiobutton
+  :init-value nil
+  :group 'org-radiobutton
   (if org-radiobutton-mode
-      (progn
-        (add-hook 'org-mode-hook 'org-radiobutton--enable)
-        (--each (buffer-list)
-          (with-current-buffer it
-            (when (eq major-mode 'org-mode)
-              (org-radiobutton--enable)))))
-    (remove-hook 'org-mode-hook 'org-radiobutton--enable)
-    (--each (buffer-list)
-      (with-current-buffer it
-        (when (eq major-mode 'org-mode)
-          (org-radiobutton--disable))))))
+      (org-radiobutton--enable)
+    (org-radiobutton--disable)))
+
+;;;###autoload
+(define-globalized-minor-mode global-org-radiobutton-mode
+  org-radiobutton-mode turn-on-org-radiobutton-mode-if-desired
+  :group 'org-radiobutton)
+
+(defun turn-on-org-radiobutton-mode-if-desired ()
+  (when (eq major-mode 'org-mode)
+    (org-radiobutton-mode 1)))
 
 (provide 'org-radiobutton)
 ;;; org-radiobutton.el ends here
