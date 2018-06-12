@@ -110,7 +110,21 @@
           (org-radiobutton-buffer-equals "
 #+attr_org: :radio
 |- [X] foo
-- [ ] bar")))))
+- [ ] bar")))
+
+      (it "should select parent list of nested lists"
+        (org-radiobutton-with-temp-org-file "
+#+attr_org: :radio
+- parent
+  - [X] child
+  - [ ] ano|ther child"
+          (org-radiobutton-mode 1)
+          (call-interactively 'org-ctrl-c-ctrl-c)
+          (org-radiobutton-buffer-equals "
+#+attr_org: :radio
+- parent
+  - [ ] child
+  - [X] another child")))))
 
   (describe "getting radiobox values"
 
