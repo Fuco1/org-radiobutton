@@ -120,6 +120,14 @@ of the item (the part at the beginning separated by ::)."
                             (org-radiobutton--get-list-at-point))))
     (org-radiobutton--get-checked-value structure with-description)))
 
+(defun org-radiobutton--read-radio-list (orig-fun element)
+  (if (and (eq (org-element-type element) 'plain-list)
+           (member ":radio" (org-element-property :attr_org element)))
+      (org-radiobutton--get-checked-value (org-element-property :structure element))
+    (funcall orig-fun element)))
+
+(advice-add 'org-babel-read-element :around #'org-radiobutton--read-radio-list)
+
 (defun org-radiobutton--enable ()
   "Enable checking of radiobutton property in current buffer."
   (add-hook 'org-checkbox-statistics-hook
