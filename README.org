@@ -2,6 +2,11 @@
 
 * org-radiobutton [[https://travis-ci.org/Fuco1/org-radiobutton.svg?branch=master]]
 
+*Note*: there is now a built-in way to do this in org mode without extra
+packages.  See [[https://list.orgmode.org/CAJcAo8tAtCRc7yKaMryJMaAEQQieAb+Bvb+Qo73icqxd=cnN1Q@mail.gmail.com/T/][discussion]] and [[https://orgmode.org/worg/org-release-notes.html][changelog]]
+(=org-list-checkbox-radio-mode=).  This effectively makes this package
+unnecessary.
+
 Radiobuttons are groups of options where exactly one option has to be
 selected at all times.
 
