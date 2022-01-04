@@ -25,10 +25,10 @@ mode and automatically becomes active in all existing =org-mode=
 buffers.
 
 Radiobutton list are excellent as sources for other code blocks in org
-mode.  This package provides a query function =org-radiobutton-value=
-which takes an element name (or the list under point) and returns the
-value of the selected item.  You can use a radiobutton list as a
-simple toggle for a pre-defined list of variable inputs.
+mode.  This package provides an advice for =org-babel-read-element= to
+only return the checked value of radiobutton list instead of the
+entire list.  You can therefore simply reference the list as any other
+org element and babel will resolve the reference to the checked item:
 
 #+BEGIN_SRC org
 ,#+attr_org: :radio
@@ -37,7 +37,7 @@ simple toggle for a pre-defined list of variable inputs.
 - [X] staging
 - [ ] production
 
-,#+BEGIN_SRC elisp :var service=(org-radiobutton-value "service-to-query")
+,#+BEGIN_SRC elisp :var service=service-to-query
 (format "Will query the %s database" service)
 ,#+END_SRC
 
@@ -45,8 +45,11 @@ simple toggle for a pre-defined list of variable inputs.
 : Will query the staging database
 #+END_SRC
 
-If the item has a description this is not included in the returned
-value unless the second optional argument is non-nil:
+If the item has a description (part after =::=) this is not included in
+the resolved value .  This package provides a query function
+=org-radiobutton-value= which takes an element name (or the list under
+point) and returns the value of the selected item.  With the second
+optional argument the description is also returned:
 
 #+BEGIN_SRC org
 ,#+attr_org: :radio
